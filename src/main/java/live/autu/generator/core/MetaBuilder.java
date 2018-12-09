@@ -121,7 +121,7 @@ public class MetaBuilder {
 	 * 构造 modelName，mysql 的 tableName 建议使用小写字母，多单词表名使用下划线分隔，不建议使用驼峰命名
 	 * oracle 之下的 tableName 建议使用下划线分隔多单词名，无论 mysql还是 oralce，tableName 都不建议使用驼峰命名
 	 */
-	protected String buildModelName(String tableName) {
+	protected String buildCamelName(String tableName) {
 		// 移除表名前缀仅用于生成 modelName、baseModelName，而 tableMeta.name 表名自身不能受影响
 		if (removedTableNamePrefixes != null) {
 			for (String prefix : removedTableNamePrefixes) {
@@ -179,7 +179,8 @@ public class MetaBuilder {
 			tableMeta.tableName = tableName;
 			tableMeta.remarks = rs.getString("REMARKS");
 			
-			tableMeta.camelName = buildModelName(tableName);
+			tableMeta.camelName = buildCamelName(tableName);
+			tableMeta.classNameSmall = StrKit.firstCharToLowerCase(tableMeta.camelName);
 			ret.add(tableMeta);
 		}
 		rs.close();
@@ -294,7 +295,7 @@ public class MetaBuilder {
 			cm.javaType = typeStr;
 			
 			// 构造字段对应的属性名 attrName
-			cm.camelName = buildCamelName(cm.name);
+			cm.javaName = buildJavaName(cm.name);
 			
 			ColumnMeta cm1 = colmap.get(cm.name);
 			if (cm1 != null) {
@@ -357,7 +358,7 @@ public class MetaBuilder {
 	 * 构造 colName 所对应的 attrName，mysql 数据库建议使用小写字段名或者驼峰字段名
 	 * Oralce 反射将得到大写字段名，所以不建议使用驼峰命名，建议使用下划线分隔单词命名法
 	 */
-	protected String buildCamelName(String colName) {
+	protected String buildJavaName(String colName) {
 		if (dialect instanceof OracleDialect) {
 			colName = colName.toLowerCase();
 		}

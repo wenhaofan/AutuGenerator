@@ -11,7 +11,7 @@ public class ColumnMeta implements Serializable  {
 	
 	public String name;				// 字段名
 	public String javaType;			// 字段对应的 java 类型
-	public String camelName;			// 字段对应的属性名
+	public String javaName;			// 字段对应的属性名
 	
 	// ---------
 	

@@ -18,6 +18,7 @@ public abstract class Generator {
 	private Template template;
 	private List<TableMeta> tableMetas;
 	
+	private boolean isOverride=true;
 	
 	
 	public Generator() {
@@ -25,7 +26,8 @@ public abstract class Generator {
 	}
 
    protected Kv buildTemplateData(TableMeta tableMeta) {
-		return Kv.by("tableMeta", tableMeta);
+		return Kv.by("tableMeta", tableMeta)
+				.set("classNameSamll", StrKit.firstCharToUpperCase(tableMeta.camelName));
 	};
 	
    protected abstract String buildFileName(Kv data);
@@ -44,6 +46,13 @@ public abstract class Generator {
 		}
 		String fileName=buildFileName(data);
 		String target = getOutputDir() + File.separator + fileName;
+		
+		if(!isOverride()) {
+			File file=new File(target);
+			if(file.exists()){
+				return;
+			}
+		}
 		
 		template.render(data, target);
 	}
@@ -94,4 +103,14 @@ public abstract class Generator {
 		this.outputDir = outputDir;
 		return this;
 	}
+
+	public boolean isOverride() {
+		return isOverride;
+	}
+
+	public Generator setOverride(boolean isOverride) {
+		this.isOverride = isOverride;
+		return this;
+	}
+ 
 }

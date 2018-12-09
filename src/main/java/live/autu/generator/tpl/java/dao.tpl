@@ -1,9 +1,11 @@
-package #(packageName);
+package #(daoPackageName);
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import java.util.List;
+import live.autu.generator.common.Page;
+import com.jfinal.kit.Kv;
 import #(modelQualifiedName);
 
 /**
@@ -26,7 +28,7 @@ public class #(tableMeta.camelName)Dao {
 	}	
 	
 	public boolean update(#(tableMeta.camelName) #(tableMeta.classNameSmall)) {
-		return sqlSession.update("#(tableMeta.camelName)Mapper.update", #(classNameSmall))>0;
+		return sqlSession.update("#(tableMeta.camelName)Mapper.update", #(tableMeta.classNameSmall))>0;
 	}
 	
 	public #(tableMeta.camelName) getById(int #(tableMeta.classNameSmall)Id) {
@@ -37,7 +39,7 @@ public class #(tableMeta.camelName)Dao {
 		return sqlSession.selectOne("#(tableMeta.camelName)Mapper.count");
 	}	
 
-	public List<#(tableMeta.camelName)> list() {
-		return sqlSession.selectList("#(tableMeta.camelName)Mapper.list");
+	public List<#(tableMeta.camelName)> list(Page<#(tableMeta.camelName)> page) {
+		return sqlSession.selectList("#(tableMeta.camelName)Mapper.list",Kv.by("page",page));
 	}
 }

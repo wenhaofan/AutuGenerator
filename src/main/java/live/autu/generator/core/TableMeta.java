@@ -15,9 +15,7 @@ public class TableMeta implements Serializable {
 	public String remarks;				// 表备注
 	public String primaryKey;			// 主键，复合主键以逗号分隔
 	public List<ColumnMeta> columnMetas = new ArrayList<ColumnMeta>();	// 字段 meta
-
-	public String baseModelContent;
-	public String baseModelName;
+	public String classNameSmall; 		//小写开头的类名
 }
 
 

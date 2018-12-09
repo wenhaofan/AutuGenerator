@@ -14,12 +14,13 @@ public class ExtMetaBuilder extends MetaBuilder {
 	 
 	private List<String> tables=new ArrayList<>();
 	
-	public void addGenerateTable(String... excludedTables) {
+	public ExtMetaBuilder addGenerateTable(String... excludedTables) {
 		if (excludedTables != null) {
 			for (String table : excludedTables) {
 				this.tables.add(table);
 			}
 		}
+		return this;
 	}
 	
 	
