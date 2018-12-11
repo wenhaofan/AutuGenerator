@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 
 import com.jfinal.plugin.activerecord.dialect.Dialect;
 
+import live.autu.generator.config.Config;
 import live.autu.generator.core.MetaBuilder;
 import live.autu.generator.core.TableMeta;
 import live.autu.generator.generator.Generator;
@@ -21,7 +22,10 @@ public class GeneratorApplication {
 	
 	protected List<Generator> generators=new ArrayList<>();
    
-
+	public GeneratorApplication() {
+		this(Config.getDataSource());
+	}
+ 
 	public void setDialect(Dialect dialect) {
 		this.dialect = dialect;
 	}

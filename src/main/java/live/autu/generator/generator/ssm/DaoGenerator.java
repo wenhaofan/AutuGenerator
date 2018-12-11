@@ -13,7 +13,7 @@ public class DaoGenerator extends Generator {
 	private String daoPackageName;
 	
 	{
-		setTemplateDir("/live/autu/generator/tpl/java/dao.tpl");
+		setTemplateDir("/live/autu/generator/generator/ssm/tpl/java/dao.tpl");
 	}
 	
 	public String getDaoPackageName() {

@@ -8,7 +8,7 @@ import live.autu.generator.generator.Generator;
 public class MapperGenerator extends Generator {
 
 	{ 
-		setTemplateDir("/live/autu/generator/tpl/mapper/mapper.tpl");
+		setTemplateDir("/live/autu/generator/generator/ssm/tpl/mapper/mapper.tpl");
 	}
 	@Override
 	protected String buildFileName(Kv data) {

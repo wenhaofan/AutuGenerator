@@ -15,7 +15,7 @@ public class ServiceGenerator extends Generator {
 	private String servicePackageName;
 	
 	{
-		setTemplateDir("/live/autu/generator/tpl/java/service.tpl");
+		setTemplateDir("/live/autu/generator/generator/ssm/tpl/java/service.tpl");
 	}
 	
 	public String getModelPackageName() {

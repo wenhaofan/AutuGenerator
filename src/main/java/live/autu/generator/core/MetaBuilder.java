@@ -22,6 +22,8 @@ import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
 import com.jfinal.plugin.activerecord.dialect.OracleDialect;
 import com.jfinal.plugin.activerecord.generator.TypeMapping;
 
+import live.autu.generator.config.Config;
+
 /**
  * MetaBuilder
  */
@@ -37,6 +39,10 @@ public class MetaBuilder {
 	protected String[] removedTableNamePrefixes = null;
 	
 	protected TypeMapping typeMapping = new TypeMapping();
+	
+	public MetaBuilder() {
+		this(Config.getDataSource());
+	}
 	
 	public MetaBuilder(DataSource dataSource) {
 		if (dataSource == null) {

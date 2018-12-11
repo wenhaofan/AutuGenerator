@@ -15,7 +15,7 @@ public class ApiGenerator extends Generator{
 	private String apiPackageName;
 	
 	{
-		setTemplateDir("/live/autu/generator/tpl/java/api.tpl");
+		setTemplateDir("/live/autu/generator/generator/ssm/tpl/java/api.tpl");
 	}
 	
 	public String getModelPackageName() {
