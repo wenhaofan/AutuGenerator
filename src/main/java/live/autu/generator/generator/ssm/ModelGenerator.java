@@ -15,7 +15,7 @@ public class ModelGenerator extends Generator {
 	private boolean isGenerateChainSetter;
 	
 	{
-		setTemplateDir("/live/autu/generator/generator/ssm/tpl/java/model.tpl");
+		setTemplateDir("/live/autu/generator/generator/ssm/tpl/model.tpl");
 	}
 	
 	public boolean isLombok() {

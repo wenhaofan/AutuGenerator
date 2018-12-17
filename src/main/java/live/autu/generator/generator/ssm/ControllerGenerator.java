@@ -8,7 +8,7 @@ import live.autu.generator.generator.Generator;
 public class ControllerGenerator extends Generator {
 
 	{
-		setTemplateDir("/live/autu/generator/generator/ssm/tpl/java/controller.tpl");
+		setTemplateDir("/live/autu/generator/generator/ssm/tpl/controller.tpl");
 	}
 	
 	@Override

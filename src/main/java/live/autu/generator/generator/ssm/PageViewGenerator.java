@@ -8,7 +8,7 @@ import live.autu.generator.generator.Generator;
 public class PageViewGenerator extends Generator{
 
 	{
-		setTemplateDir("/live/autu/generate/generator/ssm/tpl/view/page.tpl");
+		setTemplateDir("/live/autu/generate/generator/ssm/tpl/page.tpl");
 	}
 	
 	@Override
