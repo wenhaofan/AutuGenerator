@@ -15,7 +15,7 @@ import #(serviceQualifiedName);
  * #(tableMeta.camelName)  
  * #date(now)
  */
-@RequestMapping("/api/#(tableMeta.camelName)/")
+@RequestMapping("/api/#(tableMeta.classNameSmall)/")
 @Controller
 public class #(tableMeta.camelName)Api{
  	

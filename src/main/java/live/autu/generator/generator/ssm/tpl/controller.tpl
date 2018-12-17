@@ -14,7 +14,7 @@ import com.bjlemon.edu._admin.management.draw.service.#(tableMeta.camelName)Serv
  * #(tableMeta.camelName)  
  * #date(now)
  */
-@RequestMapping("/#(tableMeta.camelName)/")
+@RequestMapping("/#(tableMeta.classNameSmall)/")
 @Controller
 public class #(tableMeta.camelName)Controller{
  
