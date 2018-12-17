@@ -210,6 +210,7 @@ public class MetaBuilder {
 		// }
 		
 		tableMeta.primaryKey = primaryKey;
+		tableMeta.camlePrimaryKey=buildCamelName(primaryKey);
 		rs.close();
 	}
 	

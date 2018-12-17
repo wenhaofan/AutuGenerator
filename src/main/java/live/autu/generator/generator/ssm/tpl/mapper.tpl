@@ -54,7 +54,7 @@
 			    #end
 			</trim>
 		where
-			#(tableMeta.primaryKey) =#{value}
+			#(tableMeta.primaryKey) =#{tableMeta.camlePrimaryKey}
 	</select>
 	
 	<select id="list" parameterType="map" resultMap="#(tableMeta.camelName)ResultMap">
