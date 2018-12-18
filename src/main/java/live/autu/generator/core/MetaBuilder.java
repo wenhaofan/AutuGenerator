@@ -210,7 +210,7 @@ public class MetaBuilder {
 		// }
 		
 		tableMeta.primaryKey = primaryKey;
-		tableMeta.camlePrimaryKey=buildCamelName(primaryKey);
+		tableMeta.primaryKeySmall=buildJavaName(tableMeta.primaryKey);
 		rs.close();
 	}
 	
@@ -309,7 +309,10 @@ public class MetaBuilder {
 				cm.remarks = cm1.remarks;
 			}
  
+			cm.isPrimaryKey=tableMeta.primaryKeySmall.equals(cm.javaName);
+			
 			tableMeta.columnMetas.add(cm);
+ 
 		}
 		
 		rs.close();

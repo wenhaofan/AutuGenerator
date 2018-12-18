@@ -23,7 +23,7 @@ public class ColumnMeta implements Serializable  {
 	*/
 	public String type;				// 字段类型(附带字段长度与小数点)，例如：decimal(11,2)
 	public String isNullable;		// 是否允许空值
-	public String isPrimaryKey;		// 是否主键
+	public boolean isPrimaryKey;		// 是否主键
 	public String defaultValue;		// 默认值
 	public String remarks;			// 字段备注
 }

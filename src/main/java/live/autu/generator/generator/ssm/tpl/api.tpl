@@ -54,7 +54,7 @@ public class #(tableMeta.camelName)Api{
 	@ResponseBody
 	public Ret getById(@PathVariable("#(tableMeta.classNameSmall)Id")Integer #(tableMeta.classNameSmall)Id) {
 		#(tableMeta.camelName) result=#(tableMeta.classNameSmall)Service.getById(#(tableMeta.classNameSmall)Id);
-		return Ret.ok("#(classNameSamll)",result);
+		return Ret.ok("#(tableMeta.classNameSmall)",result);
 	}
 	
 	@RequestMapping(value = "page")
