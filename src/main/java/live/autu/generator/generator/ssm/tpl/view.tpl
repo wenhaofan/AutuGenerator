@@ -158,7 +158,7 @@ $(function(){
 	#end
 	<div class="layui-form-item">
   		<div class="layui-input-block">
-    		<button class="layui-btn" lay-submit lay-filter="update#(tableMeta.camelName)">添加</button>
+    		<button class="layui-btn" lay-submit lay-filter="update#(tableMeta.camelName)">修改</button>
   		</div>
 	</div>
 </form>

@@ -46,7 +46,7 @@
 	<select id="update" parameterType="#(tableMeta.camelName)" resultMap="#(tableMeta.camelName)ResultMap">
 		update  
 			#(tableMeta.tableName) 
-		    <trim prefix="(" suffix=")" suffixOverrides=",">
+		    <trim prefix="set" suffixOverrides=",">
 				#for(cm : tableMeta.columnMetas)
 					 <if test="#(cm.javaName)!=null">
 						#(cm.name)=#{#(cm.javaName)},
