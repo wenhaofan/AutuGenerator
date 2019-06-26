@@ -79,8 +79,9 @@ public abstract class Generator {
 		return templateDir;
 	}
 
-	public void setTemplateDir(String templateDir) {
+	public Generator setTemplateDir(String templateDir) {
 		this.templateDir = templateDir;
+		return this;
 	}
 
 	public Template getTemplate() {

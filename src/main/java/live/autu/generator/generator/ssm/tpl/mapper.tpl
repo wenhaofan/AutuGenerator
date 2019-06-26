@@ -43,7 +43,7 @@
 			#(tableMeta.primaryKey)=#{value}
 	</update>
  
-	<select id="update" parameterType="#(tableMeta.camelName)" resultMap="#(tableMeta.camelName)ResultMap">
+	<update id="update" parameterType="#(tableMeta.camelName)" resultType="boolean">
 		update  
 			#(tableMeta.tableName) 
 		    <trim prefix="set" suffixOverrides=",">
@@ -55,7 +55,7 @@
 			</trim>
 		where
 			#(tableMeta.primaryKey) =#{#(tableMeta.primaryKeySmall)}
-	</select>
+	</update>
 	
 	<select id="list" parameterType="map" resultMap="#(tableMeta.camelName)ResultMap">
 		SELECT

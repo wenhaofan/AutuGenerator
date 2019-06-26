@@ -1,4 +1,12 @@
 <script>
+function formatDate(d){
+	if(isNaN(d)){
+		return d;
+	}
+	const date=new Date(d);
+	return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
+}
+
 layui.use(['table','form','layer','laydate'],function(){
 	table=layui.table;
 	form=layui.form;
@@ -45,17 +53,22 @@ var #(tableMeta.classNameSmall)={
 		lemon.renderTable({
 			url:"#(urlPrefix)/#(tableMeta.classNameSmall)/list"
 			,elem: '##(tableMeta.classNameSmall)Table'
-			,toolbar: true
 		    ,page: true //开启分页
 		    ,cols: [[ //表头
 		    	  #for(cm : tableMeta.columnMetas) #if(cm.isPrimaryKey) #continue #end
-		   		 	{field:'#(cm.javaName)',title:"#(cm.remarks)"}
-				  	#if(!for.last) ,#end
+		    	 	#if(cm.javaType=="java.util.Date")
+		    	 	{templet:function(d){ return formatDate(d.#(cm.javaName)); },title:"#(cm.remarks)"}#if(!for.last) ,#end
+		    	 	#else if(cm.javaName=="isDeleted")
+		    	 	{templet:function(d){ return !d.isDeleted?'未删除':'已删除' },title:"#(cm.remarks)"}#if(!for.last) ,#end
+		    	 	#else
+		    	 	{field:'#(cm.javaName)',title:"#(cm.remarks)"}#if(!for.last) ,#end
+		    	 	#end 
 				  #end
-		      ,{templet:'#tpl-operation',minWidth:200, title:"操作"}
+		      ,{templet:'#tpl-operation', title:"操作"}
 		    ]]
 		})
 	},add#(tableMeta.camelName):function(){
+	
 		layer.open({
 			  area:'520px',
 			  type: 1,
@@ -125,6 +138,9 @@ $(function(){
 		#if(cm.isPrimaryKey)
 			#continue
 		#end
+			#if(cm.javaName=="gmtCreate"||cm.javaName=="gmtModified"||cm.javaName=="isDeleted"||cm.javaName=="isValid"||cm.javaName=="state")
+			#continue
+		#end
 	<div class="layui-form-item">
  	 	<label class="layui-form-label">#(cm.remarks)</label>
   		<div class="layui-input-block">
@@ -144,10 +160,12 @@ $(function(){
 <form id="add#(tableMeta.camelName)" lay-filter="update#(tableMeta.camelName)" onsubmit="return false;" style="margin: 10px 20px 20px 0px;" class="layui-form">
 	<input type="hidden" name="#(tableMeta.primaryKeySmall)" >
 	#for(cm : tableMeta.columnMetas)
-		#if(cm.isPrimaryKey)	
+		#if(cm.isPrimaryKey)
 			#continue
 		#end
-
+			#if(cm.javaName=="gmtCreate"||cm.javaName=="gmtModified"||cm.javaName=="isDeleted"||cm.javaName=="isValid"||cm.javaName=="state")
+			#continue
+		#end
 	<div class="layui-form-item">
  	 	<label class="layui-form-label">#(cm.remarks)</label>
   		<div class="layui-input-block">

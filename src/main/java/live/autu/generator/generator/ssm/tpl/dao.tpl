@@ -19,6 +19,11 @@ public class #(tableMeta.camelName)Dao {
 	@Autowired
 	private SqlSession sqlSession;
  
+ 	public boolean save#(tableMeta.camelName)s(List<#(tableMeta.camelName)> #(tableMeta.classNameSmall)s) {
+		return sqlSession.insert("#(tableMeta.camelName)Mapper.save", #(tableMeta.classNameSmall))>0;
+	}
+ 
+ 
 	public boolean save(#(tableMeta.camelName) #(tableMeta.classNameSmall)) {
 		return sqlSession.insert("#(tableMeta.camelName)Mapper.save", #(tableMeta.classNameSmall))>0;
 	}
